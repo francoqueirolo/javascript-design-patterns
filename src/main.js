@@ -1,11 +1,11 @@
-import './style.css'
-import { hello } from './patterns.js'
+import "./style.css";
+import { hello } from "./patterns.js";
 
-document.querySelector('#app').innerHTML = `
+document.querySelector("#app").innerHTML = `
   <div>
     <p>Open console and run:</p>
-    <pre>example: windows.run('adapter')</pre>
+    <pre>example: run('factory')</pre>
   </div>
-`
+`;
 
 hello();

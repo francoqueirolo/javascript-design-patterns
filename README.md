@@ -16,10 +16,10 @@ Dive in and take your software design skills to the next level!
 
 3. Open index.html in your browser and open the browser's console
 
-4. Use the global runExample() method to run one of the examples
+4. Use the global run() method to run one of the examples
     `run('factory')`
 
-Valid example names (to be passed as a string to the runExample() function) are:
+Valid example names (to be passed as a string to the run() function) are:
 
 * `factory`
 * `pubsub`

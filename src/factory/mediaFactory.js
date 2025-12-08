@@ -1,16 +1,11 @@
-define(function (require) {
-    'use strict';
+import { Image } from "./image";
+import { Video } from "./video";
 
-    var media = {
-        Video: require('factory/video'),
-        Image: require('factory/image')
-    };
+export class CreateMedia {
+  constructor(type, attributes) {
+    const media = { Image, Video };
+    const MediaType = media[type];
 
-    return {
-        createMedia: function (type, attributes) {
-            var MediaType = media[type];
-
-            return new MediaType(attributes);
-        }
-    };
-});
+    return new MediaType(attributes);
+  }
+}
