@@ -1,8 +1,9 @@
 import { factory } from "./factory";
+import { pubsub } from "./pubsub";
 
 var examples = {
   factory: factory,
-  //   pubsub: pubsub,
+  pubsub: pubsub,
   //   strategy: strategy,
   //   observer: observer,
   //   cor: cor,

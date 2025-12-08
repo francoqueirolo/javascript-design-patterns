@@ -1,11 +1,10 @@
-define(function (require) {
-    'use strict';
+import { pubsub } from './pubsub';
 
-    var pubSub = require('pubsub/pubsub'),
-        subscription;
-
-    subscription = pubSub.subscribe('atopic', function (data) {
-        console.log('atopic was published with data: ' + data.something);
-        subscription.dispose();
+export class ModuleA {
+  constructor() {
+    this.subscription = pubsub.subscribe('atopic', (data) => {
+      console.log('atopic was published with data:', data.something);
+      this.subscription.dispose();
     });
-});
+  }
+}

@@ -1,15 +1,11 @@
-define(function (require) {
-    'use strict';
+import { pubsub } from './pubsub';
 
-    var pubSub = require('pubsub/pubsub');
-
-    return {
-        publishEvent: function () {
-            var data = {
-                something: 'some data'
-            };
-
-            pubSub.publish('atopic', data);
-        }
+export class ModuleB {
+  publishEvent() {
+    const data = {
+      something: 'some data'
     };
-});
+
+    pubsub.publish('atopic', data);
+  }
+}
