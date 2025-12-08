@@ -1,11 +1,10 @@
-define(function (require) {
-    'use strict';
+import { newInterface } from './newInterface';
 
-    var newInterface = require('adapter/newInterface');
-
-    return {
-        doSomethingOld: function () {
-            return newInterface.doSomethingNew('new thing');
-        }
-    };
-});
+/**
+ * Adapter that makes the new interface compatible with the old one
+ */
+export class OldInterfaceAdapter {
+  doSomethingOld() {
+    return newInterface.doSomethingNew('new thing');
+  }
+}

@@ -1,11 +1,7 @@
-define(function () {
-    'use strict';
+export class NewInterface {
+  doSomethingNew(newArg) {
+    console.log('doing the', newArg);
+  }
+}
 
-    var NewInterface = function () { };
-
-    NewInterface.prototype.doSomethingNew = function (newArg) {
-        console.log('doing the ', newArg);
-    };
-
-    return new NewInterface();
-});
+export const newInterface = new NewInterface();

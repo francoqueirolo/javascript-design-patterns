@@ -1,11 +1,7 @@
-define(function () {
-    'use strict';
+export class OldInterface {
+  doSomethingOld() {
+    console.log('doing the old thing');
+  }
+}
 
-    var OldInterface = function () { };
-
-    OldInterface.prototype.doSomethingOld = function () {
-        console.log('doing the old thing');
-    };
-
-    return new OldInterface();
-});
+export const oldInterface = new OldInterface();

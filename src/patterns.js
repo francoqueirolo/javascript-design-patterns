@@ -1,5 +1,6 @@
 import { factory } from "./factory";
 import { pubsub } from "./pubsub";
+import { adapter } from "./adapter";
 
 var examples = {
   factory: factory,
@@ -11,7 +12,7 @@ var examples = {
   //   iterator: iterator,
   //   facade: facade,
   //   decorator: decorator,
-  //   adapter: adapter,
+  adapter: adapter,
   //   composite: composite,
   //   proxy: proxy,
 };
