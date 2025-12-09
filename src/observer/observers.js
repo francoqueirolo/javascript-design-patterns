@@ -1,23 +1,19 @@
-define(function () {
-    'use strict';
+export class Observers {
+  constructor() {
+    this.observers = [];
+  }
 
-    var Observers = function () {
-        this.observers = [];
-    };
+  add(observer) {
+    this.observers.push(observer);
+  }
 
-    Observers.prototype.add = function (observer) {
-        this.observers.push(observer);
-    };
+  remove(observerToRemove) {
+    this.observers = this.observers.filter(function (observer) {
+      return observer !== observerToRemove;
+    });
+  }
 
-    Observers.prototype.remove = function (observerToRemove) {
-        this.observers = this.observers.filter(function (observer) {
-            return observer !== observerToRemove;
-        });
-    };
-
-    Observers.prototype.get = function () {
-        return this.observers;
-    };
-
-    return Observers;
-});
+  get() {
+    return this.observers;
+  }
+}

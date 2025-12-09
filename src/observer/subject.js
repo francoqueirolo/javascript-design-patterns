@@ -1,41 +1,37 @@
-define(function (require) {
-    'use strict';
+import { Observers } from './observers';
 
-    var Observers = require('observer/observers');
+export class Collection {
+  constructor(items) {
+    this.observers = new Observers();
+    this.collection = items || [];
+  }
 
-    var Collection = function (items) {
-        this.observers = new Observers();
-        this.collection = items || [];
-    };
+  observe(observer) {
+    this.observers.add(observer);
+  }
 
-    Collection.prototype.observe = function (observer) {
-        this.observers.add(observer);
-    };
+  unObserve(observer) {
+    this.observers.remove(observer);
+  }
 
-    Collection.prototype.unObserve = function (observer) {
-        this.observers.remove(observer);
-    };
+  notify(event, data) {
+    this.observers.get().forEach(function (observer) {
+      observer.notify(event, data);
+    });
+  }
 
-    Collection.prototype.notify = function (event, data) {
-        this.observers.get().forEach(function (observer) {
-            observer.notify(event, data);
-        });
-    };
+  add(item) {
+    this.collection.push(item);
+    this.notify('added', item);
+  }
 
-    Collection.prototype.add = function (item) {
-        this.collection.push(item);
-        this.notify('added', item);
-    };
-
-    Collection.prototype.remove = function (itemToRemove) {
-        this.collection = this.collection.filter(function (item) {
-            if (item !== itemToRemove) {
-                return true;
-            }
-            this.notify('removed', item);
-            return false;
-        }, this);
-    };
-
-    return Collection;
-});
+  remove(itemToRemove) {
+    this.collection = this.collection.filter(function (item) {
+      if (item !== itemToRemove) {
+        return true;
+      }
+      this.notify('removed', item);
+      return false;
+    }, this);
+  }
+}
