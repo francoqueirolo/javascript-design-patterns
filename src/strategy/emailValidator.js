@@ -1,9 +1,5 @@
-define(function () {
-    'use strict';
-
-    return {
-        validate: function (value) {
-            return value.indexOf('@') !== -1;
-        }
-    };
-});
+export const emailValidator = {
+  validate(value) {
+    return value.includes('@');
+  }
+};

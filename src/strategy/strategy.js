@@ -1,20 +1,19 @@
-define(function () {
-    'use strict';
+export class Validator {
+  constructor() {
+    this.validator = null;
+  }
 
-    var Validator = function () { };
+  selectValidator(validator) {
+    this.validator = validator;
 
-    Validator.prototype.selectValidator = function (validator) {
-        this.validator = validator;
+    return this;
+  }
 
-        return this;
-    };
+  validate(value) {
+    if (this.validator) {
+      return this.validator.validate(value);
+    }
+    throw new Error('No validator selected');
+  }
+}
 
-    Validator.prototype.validate = function (value) {
-        if (this.validator) {
-            return this.validator.validate(value);
-        }
-        throw ('No validator selected');
-    };
-
-    return Validator;
-});
