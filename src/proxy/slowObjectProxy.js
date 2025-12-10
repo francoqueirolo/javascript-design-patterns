@@ -1,35 +1,21 @@
-define(function (require) {
-    'use strict';
+import { SlowObject } from './slowObject';
 
-    var SlowObjectProxy, slowObjectInstance,
-        slowObject = require('proxy/slowObject');
+export class SlowObjectProxy {
+  #instance = null;
+  #initialized = false;
 
-    SlowObjectProxy = function () {
-        this.someMethod = function () {
-            var interval;
-
-            if (!slowObjectInstance) {
-                slowObjectInstance = slowObject.init();
-            } else {
-                slowObjectInstance.someMethod();
-            }
-
-            interval = window.setInterval(invokeMethodWhenExists, 100);
-
-            function invokeMethodWhenExists() {
-                if (slowObjectInstance) {
-                    console.log('proxying some method');
-                    window.clearInterval(interval);
-
-                    slowObjectInstance.someMethod();
-                }
-            }
-        }
+  someMethod() {
+    if (this.#initialized && this.#instance) {
+      console.log('Using initialized instance');
+      return this.#instance.someMethod();
     }
 
-    return {
-        init: function () {
-            return new SlowObjectProxy();
-        }
-    }
-});
+    console.log('Slow object, status: Initialized');
+    this.#instance = new SlowObject();
+    this.#instance.init(); // loading big data
+    this.#initialized = true;
+
+    console.log('Slow object, status: Loaded');
+    return this.#instance.someMethod();
+  }
+}

@@ -4,6 +4,7 @@ import { adapter } from "./adapter";
 import { strategy } from "./strategy";
 import { observer } from "./observer";
 import { iterator } from "./iterator";
+import { proxy } from "./proxy";
 
 var examples = {
   factory: factory,
@@ -17,7 +18,7 @@ var examples = {
   //   decorator: decorator,
   adapter: adapter,
   //   composite: composite,
-  //   proxy: proxy,
+  proxy: proxy
 };
 
 window.run = function (example) {
