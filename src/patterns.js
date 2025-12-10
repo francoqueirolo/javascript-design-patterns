@@ -3,6 +3,7 @@ import { pubsub } from "./pubsub";
 import { adapter } from "./adapter";
 import { strategy } from "./strategy";
 import { observer } from "./observer";
+import { iterator } from "./iterator";
 
 var examples = {
   factory: factory,
@@ -11,7 +12,7 @@ var examples = {
   observer: observer,
   //   cor: cor,
   //   mediator: mediator,
-  //   iterator: iterator,
+  iterator: iterator,
   //   facade: facade,
   //   decorator: decorator,
   adapter: adapter,
