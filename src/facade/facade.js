@@ -1,29 +1,25 @@
-define(function (require) {
-    'use strict';
+import { Processor } from './processor';
 
-    var processor = require('facade/processor');
+export class Facade {
+  constructor() {
+    this.processor = new Processor();
+  }
 
-    return {
-        processThing: function (thing) {
-            switch (Object.prototype.toString.call(thing)) {
-                case '[object String]':
-                    return processor.processString(thing);
-                    break;
-                case '[object Number]':
-                    return processor.processNumber(thing);
-                    break;
-                case '[object Boolean]':
-                    return processor.processBoolean(thing);
-                    break;
-                case '[object Array]':
-                    return processor.processArray(thing);
-                    break;
-                case '[object Object]':
-                    return processor.processObject(thing);
-                    break;
-                default:
-                    return 'Unable to process the thing!';
-            }
-        }
-    };
-});
+  processThing(thing) {
+    const type = typeof thing;
+    console.log(type);
+
+    switch (type) {
+      case 'string':
+        return this.processor.processString(thing);
+      case 'number':
+        return this.processor.processNumber(thing);
+      case 'boolean':
+        return this.processor.processBoolean(thing);
+      case 'object':
+        return this.processor.processObject(thing);
+      default:
+        return 'Unable to process the thing!';
+    }
+  }
+}

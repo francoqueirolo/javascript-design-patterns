@@ -1,21 +1,21 @@
-define(function () {
-    'use strict';
+export class Processor {
+  processString(string) {
+    return string.substring(0, string.length / 2);
+  }
 
-    return {
-        processString: function (string) {
-            return string.substring(0, string.length / 2);
-        },
-        processNumber: function (number) {
-            return number * number;
-        },
-        processBoolean: function (bool) {
-            return !bool;
-        },
-        processArray: function (array) {
-            return array.length;
-        },
-        processObject: function (object) {
-            return Object.keys(object).length;
-        }
-    }
-});
+  processNumber(number) {
+    return number * number;
+  }
+
+  processBoolean(bool) {
+    return !bool;
+  }
+
+  processArray(array) {
+    return array.length;
+  }
+
+  processObject(object) {
+    return Object.keys(object).length;
+  }
+}
