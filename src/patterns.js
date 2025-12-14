@@ -7,6 +7,7 @@ import { iterator } from './iterator';
 import { proxy } from './proxy';
 import { composite } from './composite';
 import { facade } from './facade';
+import { mediator } from './mediator';
 
 var examples = {
   factory: factory,
@@ -14,7 +15,7 @@ var examples = {
   strategy: strategy,
   observer: observer,
   //   cor: cor,
-  //   mediator: mediator,
+  mediator: mediator,
   iterator: iterator,
   facade: facade,
   //   decorator: decorator,

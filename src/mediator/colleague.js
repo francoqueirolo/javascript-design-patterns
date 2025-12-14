@@ -1,28 +1,25 @@
-define(function () {
-    'use strict';
+export class Colleague {
+  constructor(id, mediator) {
+    this.id = id;
+    this.mediator = mediator;
+  }
 
-    var Colleague = function (id, mediator) {
-        this.id = id;
-        this.mediator = mediator;
-    };
+  receiveMessage(message) {
+    console.log('Module', this.id, 'received message:', message);
+    return true;
+  }
 
-    Colleague.prototype.receiveMessage = function (message) {
-        console.log('Module', this.id, 'received message:', message);
-        return true;
-    };
+  sendMessage(message, recipientId) {
+    recipientId
+      ? this.mediator.send(recipientId, message)
+      : this.mediator.broadcast(message, this);
+  }
 
-    Colleague.prototype.sendMessage = function (message, recipientId) {
-        (recipientId) ? this.mediator.send(recipientId, message) :
-            this.mediator.broadcast(message, this);
-    };
+  static create(id, mediator) {
+    var that = new Colleague(id, mediator);
 
-    return {
-        create: function (id, mediator) {
-            var that = new Colleague(id, mediator);
+    mediator.register(that);
 
-            mediator.register(that);
-
-            return that;
-        }
-    };
-});
+    return that;
+  }
+}
