@@ -1,16 +1,12 @@
-define(function () {
-    'use strict';
-
-    var User = function (id) {
-        this.id = id;
-        this.getPermissions = function () {
-            return 'public:read';
-        }
+export class User {
+  constructor(id) {
+    this.id = id;
+    this.getPermissions = function () {
+      return 'default:read';
     };
+  }
 
-    User.prototype.decoratePermissions = function (decorator) {
-        this.getPermissions = decorator.getPermissions;
-    };
-
-    return User;
-});
+  decoratePermissions(decorator) {
+    this.getPermissions = decorator.getPermissions;
+  }
+}

@@ -8,6 +8,7 @@ import { proxy } from './proxy';
 import { composite } from './composite';
 import { facade } from './facade';
 import { mediator } from './mediator';
+import { decorator } from './decorator';
 
 var examples = {
   factory: factory,
@@ -18,7 +19,7 @@ var examples = {
   mediator: mediator,
   iterator: iterator,
   facade: facade,
-  //   decorator: decorator,
+  decorator: decorator,
   adapter: adapter,
   composite: composite,
   proxy: proxy,
