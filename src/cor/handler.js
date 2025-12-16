@@ -1,20 +1,19 @@
-define(function () {
-    'use strict';
+export class Handler {
+  constructor(communicationType, handler, nextHandler) {
+    this.communicationType = communicationType;
+    this.handler = handler;
+    this.nextHandler = nextHandler;
+  }
 
-    var CommunicationHandler = function (communicationType, handler, nextHandler) {
-        this.communicationType = communicationType;
-        this.handler = handler;
-        this.nextHandler = nextHandler;
-    };
-
-    CommunicationHandler.prototype.handleCommunication = function (communication) {
-        if (communication.type !== this.communicationType) {
-            (this.nextHandler) ? this.nextHandler.handleCommunication(communication) :
-                console.log('Communication type', communication.type, 'could not be handled');
-            return;
-        }
-        this.handler(communication);
-    };
-
-    return CommunicationHandler;
-});
+  handleCommunication(communication) {
+    if (communication.type !== this.communicationType) {
+      console.log(`[${this.communicationType}Handler] No puedo manejar esto, pasando al siguiente...`);
+      return this.nextHandler 
+        ? this.nextHandler.handleCommunication(communication)
+        : console.log(`❌ Ningún manejador pudo procesar: ${communication.type}`);
+    }
+    
+    console.log(`[${this.communicationType}Handler] Procesando...`);
+    return this.handler(communication);
+  }
+}

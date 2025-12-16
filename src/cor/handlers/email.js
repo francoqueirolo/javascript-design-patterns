@@ -1,14 +1,15 @@
-define(function (require) {
-    'use strict';
+// handlers/email.js
+import { Handler } from '../handler';
 
-    var Handler = require('cor/handler'),
-        emailHandler;
+const handleEmail = (email) => {
+  console.log(`📧 Email enviado a ${email.recipient}: ${email.message}`);
+  return true;
+};
 
-    emailHandler = new Handler('email', handleEmail, null);
-
-    function handleEmail(email) {
-        console.log('Email sent to', email.recipient, 'message: ', email.message);
-    }
-
-    return emailHandler;
+export const emailHandler = new Handler('email', handleEmail, {
+  handleCommunication: (comm) => {
+    console.log('⚠️ ¡Este es el final de la cadena!');
+    console.log(`Ningún manejador pudo procesar: ${comm.type}`);
+    return false;
+  }
 });

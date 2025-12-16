@@ -9,13 +9,14 @@ import { composite } from './composite';
 import { facade } from './facade';
 import { mediator } from './mediator';
 import { decorator } from './decorator';
+import { cor } from './cor';
 
 var examples = {
   factory: factory,
   pubsub: pubsub,
   strategy: strategy,
   observer: observer,
-  //   cor: cor,
+  cor: cor,
   mediator: mediator,
   iterator: iterator,
   facade: facade,

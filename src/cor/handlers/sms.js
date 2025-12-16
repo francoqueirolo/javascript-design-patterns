@@ -1,15 +1,9 @@
-define(function (require) {
-    'use strict';
+import { Handler } from '../handler';
+import { emailHandler } from './email';
 
-    var Handler = require('cor/handler'),
-        emailHandler = require('cor/handlers/email'),
-        smsHandler;
+const handleSms = (sms) => {
+  console.log(`SMS enviado a ${sms.number}: ${sms.message}`);
+  return true;
+};
 
-    smsHandler = new Handler('sms', handleSms, emailHandler);
-
-    function handleSms(sms) {
-        console.log('SMS sent to number', sms.number, 'message: ', sms.message);
-    }
-
-    return smsHandler;
-});
+export const smsHandler = new Handler('sms', handleSms, emailHandler);

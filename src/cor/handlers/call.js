@@ -1,15 +1,9 @@
-define(function (require) {
-    'use strict';
+import { Handler } from '../handler';
+import { smsHandler } from './sms';
 
-    var Handler = require('cor/handler'),
-        smsHandler = require('cor/handlers/sms'),
-        callHandler;
+const handleCall = (call) => {
+  console.log(`Llamada a ${call.number} desde ${call.ownNumber}: ${call.message}`);
+  return true;
+};
 
-    callHandler = new Handler('call', handleCall, smsHandler);
-
-    function handleCall(call) {
-        console.log('Call placed to number', call.number, 'from number', call.ownNumber);
-    }
-
-    return callHandler;
-});
+export const callHandler = new Handler('call', handleCall, smsHandler);
