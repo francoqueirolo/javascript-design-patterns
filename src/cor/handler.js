@@ -7,13 +7,15 @@ export class Handler {
 
   handleCommunication(communication) {
     if (communication.type !== this.communicationType) {
-      console.log(`[${this.communicationType}Handler] No puedo manejar esto, pasando al siguiente...`);
-      return this.nextHandler 
+      console.log(
+        `[${this.communicationType}-Handler] It's cannot handle: ${communication.type}`
+      );
+      return this.nextHandler
         ? this.nextHandler.handleCommunication(communication)
-        : console.log(`❌ Ningún manejador pudo procesar: ${communication.type}`);
+        : console.log(`Any other communication: ${communication.type}`);
     }
-    
-    console.log(`[${this.communicationType}Handler] Procesando...`);
+
+    console.log(`[${this.communicationType}-Handler] Handling...`);
     return this.handler(communication);
   }
 }

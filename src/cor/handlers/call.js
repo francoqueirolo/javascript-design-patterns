@@ -2,7 +2,7 @@ import { Handler } from '../handler';
 import { smsHandler } from './sms';
 
 const handleCall = (call) => {
-  console.log(`Llamada a ${call.number} desde ${call.ownNumber}: ${call.message}`);
+  console.log(`Call to ${call.number} from ${call.ownNumber}: ${call.message}`);
   return true;
 };
 
